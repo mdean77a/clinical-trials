@@ -13,8 +13,8 @@ in starting their project:
 <div align="center">
   <table>
     <tr>
-      <td><img src="CoordinatorProtocol.png" alt="Coordinator" width="300" /></td>
-      <td><img src="TooSLOW.png" alt="Investigator" width="300" /></td>
+      <td><img src="figures/CoordinatorProtocol.png" alt="Coordinator" width="300" /></td>
+      <td><img src="figures/TooSLOW.png" alt="Investigator" width="300" /></td>
     </tr>
   </table>
 </div>
@@ -38,7 +38,7 @@ the components written in parallel, as shown in this workflow:
 <div align="center">
     <table>
     <tr>
-      <td><img src="agents.png" alt="Agents" width="100%" /></td>
+      <td><img src="figures/agents.png" alt="Agents" width="100%" /></td>
     </tr>
   </table>
 </div>
