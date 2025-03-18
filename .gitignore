@@ -13,5 +13,4 @@ qdrant_storage/
 *ICF.md 
 langserve_backend/.vscode/launch.json
 langserve_backend/.vscode/settings.json
-**/experimental/ClinicalTrialAccelerator.pdf
-**/experimental/ClinicalTrialAccelerator.key
+
