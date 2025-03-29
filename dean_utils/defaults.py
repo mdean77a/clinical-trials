@@ -1,0 +1,69 @@
+"""
+Contains default values, model setups, logging configuration, etc. that
+can be imported by other modules or notebooks.
+"""
+
+from langchain_openai.embeddings import OpenAIEmbeddings
+from langchain_openai.chat_models import ChatOpenAI
+from langchain_huggingface import HuggingFaceEmbeddings
+import getpass
+import os
+import logging
+import sys
+
+# Define what should be exported from this module
+__all__ = [
+    'logger',
+    'set_api_key',
+    'te3_embedding_model',
+    'bge_embedding_model',
+    'qdrant_local_url',
+    'gpt4o_llm'
+]
+
+# Configure logging to output to terminal
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)
+
+# Remove any existing handlers to avoid duplicate output
+logger.handlers = []
+
+# Create a stream handler that writes to sys.stderr (terminal)
+handler = logging.StreamHandler(sys.stderr)
+handler.setLevel(logging.INFO)
+
+
+# Create a formatter
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', 
+                            datefmt='%Y-%m-%d %H:%M:%S')
+handler.setFormatter(formatter)
+
+# Add the handler to the logger
+logger.addHandler(handler)
+
+# Prevent propagation to root logger to avoid duplicate output
+logger.propagate = False
+
+def set_api_key(key_name: str) -> None:
+    """
+    Securely set an environment variable if it doesn't already exist.
+    Prompts the user for input using a password-style hidden input.
+    
+    Args:
+        key_name (str): Name of the environment variable to set (e.g., "OPENAI_API_KEY")
+    """
+    if not os.environ.get(key_name):
+        os.environ[key_name] = getpass.getpass(f"{key_name}: ")
+
+# Example usage:
+# set_api_key("OPENAI_API_KEY")
+# set_api_key("ANTHROPIC_API_KEY")
+
+
+te3_embedding_model = OpenAIEmbeddings(model="text-embedding-3-small", api_key=set_api_key("OPENAI_API_KEY"))
+bge_embedding_model = HuggingFaceEmbeddings(
+    model_name="BAAI/bge-base-en", 
+    encode_kwargs={"normalize_embeddings": True}
+)
+qdrant_local_url = "http://localhost:6333"
+gpt4o_llm = ChatOpenAI(model="gpt-4o", api_key=set_api_key("OPENAI_API_KEY"), streaming=True, temperature=0)
