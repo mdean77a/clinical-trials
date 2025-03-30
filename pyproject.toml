@@ -16,6 +16,7 @@ dependencies = [
     "langchain-qdrant>=0.2.0",
     "langchain-openai>=0.3.11",
     "langchain-ollama>=0.3.0",
+    "langchain-experimental>=0.3.4",
 ]
 
 [dependency-groups]

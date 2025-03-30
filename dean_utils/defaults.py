@@ -85,28 +85,7 @@ ollama_llama_8b_llm = ChatOllama(
     temperature=0,
     top_k=40,
     top_p=0.95,
-    num_keep=5,
-    num_predict=100,
-    min_p=0.05,
-    typical_p=0.7,
-    repeat_last_n=33,
-    repeat_penalty=1.1,
-    presence_penalty=0.0,
-    frequency_penalty=0.0,
-    mirostat=0,
-    mirostat_tau=5.0,
-    mirostat_eta=0.1,
-    penalize_newline=True,
-    stop=["\n", "user:"],
-    numa=False,
-    num_ctx=131072,
-    num_batch=512,
-    num_gpu=32,
-    main_gpu=0,
-    low_vram=False,
-    vocab_only=False,
-    use_mmap=True,
-    use_mlock=False,
-    num_thread=8   
+
+  
     
 )
